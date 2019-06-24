@@ -21,3 +21,4 @@ Pagina universale per visualizzare la serie storica e l'ultimo valore assoluto r
     [Esempio](http://www.piersoft.it/pm10/?channel_id=174342&readkey=EBPJ5UHC8CWPWPSW&location=Casa%20Vacanza%20Excellence%20Matera&channel_idmedia=705275&widget=44574)
     
     
+Licenza MIT
