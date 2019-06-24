@@ -286,9 +286,14 @@ console.log('https://api.thingspeak.com/channels/' + channel_id + '/fields/feed.
     <div id="gauge_aum"></div>
 </div>
 <div>
+  <?php
+if ($_GET['widget'] !=''){
+
+?>
 <h3>PM10 media giorno precedente:</h3>
 
 <iframe width="450" height="260" style="border: 1px solid #FFFFFF; background-color: #FFFFFF;" src="https://thingspeak.com/channels/<?php printf($_GET['channel_idmedia']); ?>/widgets/<?php printf($_GET['widget']); ?>"></iframe>
+<?php }   ?>
 </div>
 
   <h2>Centralina amatoriale situata presso <?php printf($_GET['location']); ?></h2>
