@@ -1,3 +1,9 @@
+<?php
+function h($data,$encoding='UTF-8')
+{
+   return htmlspecialchars($data,ENT_QUOTES | ENT_HTML401,$encoding);
+}
+?>
 <!DOCTYPE html>
 <html>
   <head>
@@ -6,7 +12,9 @@
 <script type="text/javascript" src="//thingspeak.com/highcharts-3.0.8.js"></script>
 <script type="text/javascript" src="//thingspeak.com/exporting.js"></script>
 <meta property="og:image" content="http://www.piersoft.it/mkrfox1200/mkrfox1200.png" />
-  <title><?php printf($_GET['location']); ?></title>
+<META HTTP-EQUIV="Refresh" CONTENT="120; url=http://www.piersoft.it/pm10?channel_id=<?php printf(h($_GET['channel_id'])); ?>">
+
+  <title><?php printf(h($_GET['location'])); ?></title>
     <!-- EXTERNAL LIBS-->
     <style type="text/css">
      body { background-color: #FFFFFF; }
@@ -24,9 +32,9 @@
 <script type='text/javascript'>
 
  // set your channel id here
- var channel_id = <?php printf($_GET['channel_id']); ?>;
+ var channel_id = <?php printf(h($_GET['channel_id'])); ?>;
  // set your channel's read api key here if necessary
- var api_key = '<?php printf($_GET['readkey']); ?>';
+ var api_key = '<?php printf(h($_GET['readkey'])); ?>';
  // maximum value for the gauges
  var max_gauge_value = 100;
  // name of the gauges
@@ -34,23 +42,23 @@
  var gauge_apm10 = 'PM10';
  var gauge_apm25 = 'PM2.5';
  var gauge_aum = 'Umid.';
- var series_1_channel_id = <?php printf($_GET['channel_id']); ?>;
+ var series_1_channel_id = <?php printf(h($_GET['channel_id'])); ?>;
  var series_1_field_number = 3;
- var series_1_read_api_key = '<?php printf($_GET['readkey']); ?>';
+ var series_1_read_api_key = '<?php printf(h($_GET['readkey'])); ?>';
  var series_1_results = 250;
  var series_1_color = '#D62020';
 
  // variables for 3th series
-var series_3_channel_id = <?php printf($_GET['channel_id']); ?>;
+var series_3_channel_id = <?php printf(h($_GET['channel_id'])); ?>;
 var series_3_field_number = 2;
-var series_3_read_api_key = '<?php printf($_GET['readkey']); ?>';
+var series_3_read_api_key = '<?php printf(h($_GET['readkey'])); ?>';
 var series_3_results = 250;
 var series_3_color = '#D62020';
 
 // variables for 4th series
-var series_4_channel_id = <?php printf($_GET['channel_id']); ?>;
+var series_4_channel_id = <?php printf(h($_GET['channel_id'])); ?>;
 var series_4_field_number = 1;
-var series_4_read_api_key = '<?php printf($_GET['readkey']); ?>';
+var series_4_read_api_key = '<?php printf(h($_GET['readkey'])); ?>';
 var series_4_results = 250;
 var series_4_color = '#00caff';
 
@@ -234,7 +242,7 @@ document.getElementById('rilevazione').innerHTML += '<h3>Ultima rilevazione: '+m
 
     // get the data with a webservice call
     $.getJSON('https://api.thingspeak.com/channels/' + channel_id + '/fields/' + field_number + '.json?offset=0&round=2&results=' + results + '&api_key=' + api_key, function(data) {
-console.log('https://api.thingspeak.com/channels/' + channel_id + '/fields/feed.json?offset=0&round=2&results=' + results + '&api_key=' + api_key);
+//console.log('https://api.thingspeak.com/channels/' + channel_id + '/fields/feed.json?offset=0&round=2&results=' + results + '&api_key=' + api_key);
       // blank array for holding chart data
       var chart_data = [];
 
@@ -291,13 +299,13 @@ if ($_GET['widget'] !=''){
 ?>
 <h3>PM10 media giorno precedente:</h3>
 
-<iframe width="450" height="260" style="border: 1px solid #FFFFFF; background-color: #FFFFFF;" src="https://thingspeak.com/channels/<?php printf($_GET['channel_idmedia']); ?>/widgets/<?php printf($_GET['widget']); ?>"></iframe>
+<iframe width="450" height="260" style="border: 1px solid #FFFFFF; background-color: #FFFFFF;" src="https://thingspeak.com/channels/<?php printf(h($_GET['channel_idmedia'])); ?>/widgets/<?php printf(h($_GET['widget'])); ?>"></iframe>
 <?php }   ?>
 </div>
 
-  <h2>Centralina amatoriale situata presso <?php printf($_GET['location']); ?></h2>
+  <h2>Centralina amatoriale situata presso <?php printf(h($_GET['location'])); ?></h2>
   <h2>Basata su Wemos D1 + DHT22 + SDS011</h2>
-  <a href='https://api.thingspeak.com/channels/<?php printf($_GET['channel_id']); ?>/feeds.csv?results=6000'><h2>Scarica il file CSV della serie storica (max 6000 records)</h2></a>
+  <a href='https://api.thingspeak.com/channels/<?php printf(h($_GET['channel_id'])); ?>/feeds.csv?results=6000'><h2>Scarica il file CSV della serie storica (max 6000 records)</h2></a>
   <h2>Valori di riferimento</h2>
   <img src="riferimenti.png" style="width: 50%;">
 </body>

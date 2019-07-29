@@ -1,3 +1,9 @@
+<?php
+function h($data,$encoding='UTF-8')
+{
+   return htmlspecialchars($data,ENT_QUOTES | ENT_HTML401,$encoding);
+}
+?>
 <!DOCTYPE html>
 <html>
   <head>
@@ -6,6 +12,8 @@
 <script type="text/javascript" src="//thingspeak.com/highcharts-3.0.8.js"></script>
 <script type="text/javascript" src="//thingspeak.com/exporting.js"></script>
 <meta property="og:image" content="http://www.piersoft.it/mkrfox1200/mkrfox1200.png" />
+<META HTTP-EQUIV="Refresh" CONTENT="120; url=http://www.piersoft.it/pm10/indexsmall.php?channel_id=<?php printf(h($_GET['channel_id'])); ?>">
+
   <title><?php printf($_GET['location']); ?></title>
     <!-- EXTERNAL LIBS-->
     <style type="text/css">
