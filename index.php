@@ -6,8 +6,7 @@
 <script type="text/javascript" src="//thingspeak.com/highcharts-3.0.8.js"></script>
 <script type="text/javascript" src="//thingspeak.com/exporting.js"></script>
 <meta property="og:image" content="http://www.piersoft.it/mkrfox1200/mkrfox1200.png" />
-<META HTTP-EQUIV="Refresh" CONTENT="120; url=http://www.piersoft.it/excellence/">
-    <title>Casa Vacanze Excellence Stazione Monitoraggio</title>
+  <title><?php printf($_GET['location']); ?></title>
     <!-- EXTERNAL LIBS-->
     <style type="text/css">
      body { background-color: #FFFFFF; }
@@ -215,7 +214,7 @@ document.getElementById('rilevazione').innerHTML += '<h3>Ultima rilevazione: '+m
         type: 'datetime',
         title: { text: 'Data' }
       },
-      yAxis: { title: { text: y_axis_title } ,max: 80},
+      yAxis: { title: { text: y_axis_title } ,max: 100},
       exporting: { enabled: false },
       legend: { enabled: true },
       credits: {
@@ -298,8 +297,7 @@ if ($_GET['widget'] !=''){
 
   <h2>Centralina amatoriale situata presso <?php printf($_GET['location']); ?></h2>
   <h2>Basata su Wemos D1 + DHT22 + SDS011</h2>
-  <h4>Progetto di monitoraggio dal basso nato sulla <a href="https://community.matera-basilicata2019.it/t/stazione-monitoraggio-qualita-dellaria/237" target="_blank">Community di Matera 2019</a></h4>
-  <a href='https://api.thingspeak.com/channels/<?php printf($_GET['channel_id']); ?>/feeds.csv?results=6000'><h2>Scarica il file CSV della serie storica (6000 records)</h2></a>
+  <a href='https://api.thingspeak.com/channels/<?php printf($_GET['channel_id']); ?>/feeds.csv?results=6000'><h2>Scarica il file CSV della serie storica (max 6000 records)</h2></a>
   <h2>Valori di riferimento</h2>
   <img src="riferimenti.png" style="width: 50%;">
 </body>
